@@ -1,0 +1,25 @@
+                                            13.1
+ Java类库中,集合类的基本接口是Collection接口,如下:
+        public interface Collection<E>{
+            boolean add (E element);
+            Iterator<E> iterator();
+            .......}
+        add方法用于向集合添加元素,itrerator方法返回一个Iterator接口对象,而它包含3个方法, 
+public interface Iterator<E>{
+      E next();
+      boolean hasNext();
+      void remove();
+}  在next之前先调用hasNext()方法,否则 到达集合末尾会抛出NoSuchlementException异常.
+Collection接口扩展了Iteratable接口,因此 对于标准类库中的任何集合都可以使用"for each"循环. java迭代器位于两个元素之间,当调用next时,就会越过下一个元素,并且返回刚刚越过的元素的引用.
+remvoe用来删除上次next方法返回的元素,如果在remove之前没有调用next,会抛出一个异常.
+                                                       13.2        
+java中所有链表都是双向的.
+LinkedList.add方法将对象添加到链表尾部,常常需要将元素添加到链表中间,由于迭代器是描述集合中间位置的,所以这个添加行为由迭代器负责.ListIterator还有两个方法,可以反向遍历链表.
+绝对不应该用 for(int i=0;i<list.size();i++)来遍历链表.
+
+Vector类所有的方法都是同步的,可以两个线程安全的访问一个Vector对象,但是由一个线程来访问,会因为同步耗费大量时间,因此不需要同步的时候使用ArrayList.
+
+用get set方法随机访问不合用链表, 用迭代器.
+
+           
+
